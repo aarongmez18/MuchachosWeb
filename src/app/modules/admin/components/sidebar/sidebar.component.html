@@ -1,0 +1,61 @@
+<!-- <ul class="nav flex-column">
+  <li class="nav-item">
+    <a routerLink="/admin/home" class="nav-link active" href="#">
+      <i class="bi bi-house"></i>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="/admin/profile" class="nav-link" href="#">
+      <i class="bi bi-people"></i>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a (click)="logout()" class="nav-link">
+      <i class="bi bi-file-earmark-text"></i>
+    </a>
+  </li>
+</ul> -->
+
+<ul class="nav nav-pills nav-flush flex-column mb-auto text-center flex-column">
+  <li class="nav-item">
+    <a routerLink="/admin/home" routerLinkActive="active" ariaCurrentWhenActive="page"
+      class="nav-link py-3 border-bottom rounded-0" aria-current="page" title="Home" data-bs-toggle="tooltip"
+      data-bs-placement="right">
+      <i class="bi bi-speedometer2" style="font-size:1.5rem !important"></i>
+    </a>
+  </li>
+  <li>
+    <a routerLink="/admin/profile" routerLinkActive="active" ariaCurrentWhenActive="page"
+      class="nav-link py-3 border-bottom rounded-0" aria-current="page" title="Profile" data-bs-toggle="tooltip"
+      data-bs-placement="right">
+      <i class="bi bi-person" style="font-size:1.5rem !important"></i>
+    </a>
+  </li>
+
+  <li>
+    <a routerLink="/admin/blank" routerLinkActive="active" ariaCurrentWhenActive="page"
+      class="nav-link py-3 border-bottom rounded-0" aria-current="page" title="Blank Page" data-bs-toggle="tooltip"
+      data-bs-placement="right">
+      <i class="bi bi-file-text" style="font-size:1.5rem !important"></i>
+    </a>
+  </li>
+
+  <li>
+    <a (click)="logout()" class="nav-link py-3 border-bottom rounded-0" href="#" aria-current="page" title="Logout"
+      data-bs-toggle="tooltip" data-bs-placement="right">
+      <i class="bi bi-box-arrow-right" style="font-size:1.5rem !important"></i>
+    </a>
+  </li>
+</ul>
+<!-- <div class="dropdown border-top">
+  <a href="#"
+    class="d-flex text-light align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    <img src="https://avatars.githubusercontent.com/u/99157188?v=4" alt="mdo" width="40" height="40"
+      class="rounded-circle">
+  </a>
+  <ul class="dropdown-menu text-small shadow">
+    <li><a class="dropdown-item" routerLink="/admin/profile">Profile</a></li>
+    <li><a class="dropdown-item" href="#">Settings</a></li>
+     <li><button class="dropdown-item" (click)="logout()">Logout</button></li>
+</ul> -->
