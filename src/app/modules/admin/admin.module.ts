@@ -6,7 +6,6 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { BlankComponent } from './components/blank/blank.component';
 
@@ -17,7 +16,6 @@ import { BlankComponent } from './components/blank/blank.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    ProfileComponent,
     HomeComponent,
     BlankComponent
   ],

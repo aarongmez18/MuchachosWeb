@@ -1,0 +1,54 @@
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="/" class="brand" aria-label="Inicio">
+      <img src="assets/img/escudo/Relieve.png" alt="Agrupación Musical Muchachos de Consolación" class="brand__logo" />
+      <span class="brand__name">AM Muchachos de Consolación</span>
+    </a>
+
+    <!-- Botón hamburguesa (móvil) -->
+    <button
+      class="nav-toggle"
+      [attr.aria-expanded]="navOpen"
+      aria-controls="primary-nav"
+      (click)="toggleNav()"
+    >
+      <span class="sr-only">Abrir menú</span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Navegación -->
+    <nav id="primary-nav" class="nav" [class.open]="navOpen">
+      <ul class="nav__list">
+        <li><a href="/">Inicio</a></li>
+
+        <li class="has-dropdown">
+          <details>
+            <summary>Empresa</summary>
+            <ul class="dropdown">
+              <li><a href="/about">Sobre nosotros</a></li>
+              <li><a href="/team">Equipo</a></li>
+              <li><a href="/careers">Empleo</a></li>
+            </ul>
+          </details>
+        </li>
+
+        <li class="has-dropdown">
+          <details>
+            <summary>Productos</summary>
+            <ul class="dropdown">
+              <li><a href="/features">Características</a></li>
+              <li><a href="/pricing">Precios</a></li>
+              <li><a href="/demo">Demo</a></li>
+            </ul>
+          </details>
+        </li>
+
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

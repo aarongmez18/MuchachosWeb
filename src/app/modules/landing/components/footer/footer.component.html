@@ -1,0 +1,69 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <!-- Brand / Logo -->
+    <a class="brand" href="/" aria-label="Inicio">
+      <img src="assets/img/escudo/Relieve.png" alt="Tu marca" class="brand__logo" />
+      <span class="brand__name">AM Muchachos de Consolación</span>
+    </a>
+
+    <!-- Secciones (desplegables accesibles con <details>) -->
+    <nav class="footer-nav" aria-label="Enlaces del sitio">
+      <details class="f-section" data-accordion>
+        <summary class="f-section__title">Empresa</summary>
+        <ul class="f-links">
+          <li><a href="/about">Sobre nosotros</a></li>
+          <li><a href="/careers">Empleo</a></li>
+          <li><a href="/press">Prensa</a></li>
+        </ul>
+      </details>
+
+      <details class="f-section" data-accordion>
+        <summary class="f-section__title">Productos</summary>
+        <ul class="f-links">
+          <li><a href="/features">Características</a></li>
+          <li><a href="/pricing">Precios</a></li>
+          <li><a href="/demo">Demo</a></li>
+        </ul>
+      </details>
+
+      <details class="f-section" data-accordion>
+        <summary class="f-section__title">Recursos</summary>
+        <ul class="f-links">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/docs">Documentación</a></li>
+          <li><a href="/support">Soporte</a></li>
+        </ul>
+      </details>
+
+      <details class="f-section" data-accordion>
+        <summary class="f-section__title">Legal</summary>
+        <ul class="f-links">
+          <li><a href="/privacy">Privacidad</a></li>
+          <li><a href="/terms">Términos</a></li>
+          <li><a href="/cookies">Cookies</a></li>
+        </ul>
+      </details>
+    </nav>
+
+    <!-- Social (SVG inline, sin dependencias) -->
+    <div class="social" aria-label="Redes sociales">
+      <a href="https://x.com/tumarca" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24" class="icon"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.5l-5.1-6.6L5.6 22H2l8.2-9.4L1 2h6.6l4.6 6 6.7-6zM17 20h2L7.1 4H5z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/tumarca" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" class="icon"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.1c.7-1.2 2.5-2.5 5.1-2.5 5.5 0 6.5 3.6 6.5 8.3V24h-5v-7.7c0-1.8 0-4.1-2.5-4.1-2.5 0-2.9 1.9-2.9 4v7.8h-5V8z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/tumarca" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" class="icon"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 0 5.7 0 4.8.3 4 .6c-.9.3-1.6.7-2.3 1.4C.9 2.7.5 3.4.2 4.3.0 5.1 0 6 0 7.3 0 8.6 0 9 0 12s0 3.4.2 4.7c.3.9.7 1.6 1.4 2.3.7.7 1.4 1.1 2.3 1.4.8.3 1.7.6 3 .6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.3 3-.6.9-.3 1.6-.7 2.3-1.4.7-.7 1.1-1.4 1.4-2.3.3-.8.5-1.7.6-3 .1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.2-.6-3C23.1 1.4 22.7.7 22 0c-.7-.7-1.4-1.1-2.3-1.4C18.9-.7 18 .1 16.7.1 15.4.2 15 0 12 0zM12 5.8A6.2 6.2 0 1 0 12 18.2 6.2 6.2 0 0 0 12 5.8zm7.4-2.1a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+
+    <small class="legal">
+      &copy; {{ currentYear }} Muchachos de Consolación — Todos los derechos reservados ·
+      <a href="/privacy">Privacidad</a> · <a href="/terms">Términos</a>
+    </small>
+  </div>
+</footer>

@@ -5,7 +5,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', loadChildren: () =>
+      import('./modules/landing/landing-module').then((m) => m.LandingModule)
+  },
   { path: 'login', component: LoginComponent },
   {
     path: 'admin',
@@ -15,6 +17,7 @@ const routes: Routes = [
   },
   { path: '**', component: NotFoundComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

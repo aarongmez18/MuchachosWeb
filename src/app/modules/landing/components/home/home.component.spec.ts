@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileComponent } from './profile.component';
+import { HomeComponentLayout } from './home.component';
 
-describe('ProfileComponent', () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
+describe('HomeComponent', () => {
+  let component: HomeComponentLayout;
+  let fixture: ComponentFixture<HomeComponentLayout>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileComponent]
+      declarations: [HomeComponentLayout]
     });
-    fixture = TestBed.createComponent(ProfileComponent);
+    fixture = TestBed.createComponent(HomeComponentLayout);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
