@@ -32,16 +32,17 @@
   gap: 10px;
   text-decoration: none;
   color: var(--fg);
+}
 
-  &__logo {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-  }
-  &__name {
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
+.brand__logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.brand__name {
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 /* NAVIGATION */
@@ -54,12 +55,14 @@
   padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
+}
 
-  &.open {
-    transform: translateX(0);
-  }
+.nav.open {
+  transform: translateX(0);
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .nav {
     position: static;
     transform: none !important;
     flex-direction: row;
@@ -75,79 +78,109 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .nav__list {
     flex-direction: row;
     gap: 2rem;
   }
+}
 
-  a {
-    color: var(--fg);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
+.nav__list a {
+   position: relative;
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.nav__list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
 
-    &:hover,
-    &:focus {
-      color: var(--accent);
-    }
-  }
+.nav__list a:hover::after {
+  width: 100%;
+}
+
+.nav__list a:hover,
+.nav__list a:focus {
+  color: var(--accent);
+  transform: translateY(-2px);
 }
 
 /* DROPDOWN */
 .has-dropdown details {
   position: relative;
+}
 
-  summary {
-    list-style: none;
-    cursor: pointer;
-    font-weight: 500;
+.has-dropdown summary.dropdown-summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
 
-    &::-webkit-details-marker {
-      display: none;
-    }
-  }
+}
 
-  .dropdown {
-    list-style: none;
-    margin: 0;
-    padding: 0.5rem 0 0 0;
-    display: flex;
+.has-dropdown summary.dropdown-summary::-webkit-details-marker {
+  display: none;
+}
+
+.has-dropdown summary.dropdown-summary::after {
+  content: "▾";
+  margin-left: 6px;
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+
+details[open] > summary.dropdown-summary::after {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dropdown li a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.dropdown li a:hover {
+  color: var(--fg);
+}
+
+/* Desktop dropdown */
+@media (min-width: 768px) {
+  .has-dropdown .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    display: none;
     flex-direction: column;
-    gap: 0.5rem;
-
-    a {
-      color: var(--muted);
-      font-size: 0.95rem;
-
-      &:hover {
-        color: var(--fg);
-      }
-    }
+    min-width: 160px;
+    z-index: 1000;
   }
 
-  @media (min-width: 768px) {
-    summary::after {
-      content: "▾";
-      margin-left: 6px;
-      font-size: 0.7rem;
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #111;
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      display: none;
-      min-width: 160px;
-    }
-
-    details[open] .dropdown {
-      display: flex;
-    }
+  details[open] .dropdown {
+    display: flex;
   }
 }
 
@@ -160,20 +193,21 @@
   flex-direction: column;
   gap: 5px;
   padding: 0.5rem;
+}
 
-  .bar {
-    width: 24px;
-    height: 2px;
-    background: var(--fg);
-    border-radius: 2px;
-  }
+.nav-toggle .bar {
+  width: 24px;
+  height: 2px;
+  background: var(--fg);
+  border-radius: 2px;
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .nav-toggle {
     display: none;
   }
 }
 
-/* ACCESIBILIDAD */
 .sr-only {
   position: absolute;
   width: 1px;

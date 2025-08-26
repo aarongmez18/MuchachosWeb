@@ -7,8 +7,10 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent, NotFoundComponent,],
+  declarations: [AppComponent, LoginComponent, NotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

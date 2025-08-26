@@ -1,0 +1,26 @@
+<main>
+  <div class="repertorio-container">
+    <h1>Repertorio Procecional</h1>
+    <p>
+      El repertorio de Los Muchachos de Consolación es un repertorio cuidado, pensado para las Hermandades que acompañamos a lo largo del año. Un repertorio con marchas clásicas del estilo, un repertorio propio con obras de gran calidad de compositores reconocidos y con marchas contemporáneas de las grandes agrupaciones del momento seleccionadas por nuestra dirección musical.
+    </p>
+
+    <div class="repertorio-list">
+      <!-- Mostrar repertorios si existen -->
+      <div *ngIf="repertorios && repertorios.length > 0; else noRepertorios">
+        <div *ngFor="let rep of repertorios; let i = index" class="repertorio-item" [style.animationDelay]="i * 0.2 + 's'">
+          <h3>{{ rep.titulo }} ({{ rep.codigoRepertorio }})</h3>
+          <p>Autor: {{ rep.autor }}</p>
+          <p>Duración: {{ rep.duracion }}</p>
+          <a [href]="rep.enlace" target="_blank">Ver archivo</a>
+        </div>
+      </div>
+
+      <!-- Mensaje cuando no hay repertorios -->
+      <ng-template #noRepertorios>
+        <p class="no-repertorios">Aún no hay repertorios disponibles.</p>
+      </ng-template>
+    </div>
+  </div>
+</main>
+

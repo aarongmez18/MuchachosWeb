@@ -1,0 +1,104 @@
+/* BODY CON IMAGEN DE FONDO */
+main {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0;
+  padding: 6rem 2rem; 
+  font-family: Inter, sans-serif;
+  background: url('../../../../../../assets/img/fondos/fondo1.jpeg') center/cover no-repeat;
+  min-height: 100vh;
+  background-attachment: fixed;
+  color: #fff;
+  position: relative;
+  z-index: -2;
+}
+
+/* OVERLAY OSCURO */
+main::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+
+/* CONTENEDOR CENTRAL */
+.repertorio-container {
+  width: 90%; 
+  max-width: 1200px;
+  margin: 0 auto; 
+  background: rgba(255, 255, 255, 0.95); 
+  color: #333;
+  border-radius: 16px;
+  padding: 3rem 4rem;
+  backdrop-filter: blur(10px); 
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  animation: fadeIn 1s ease forwards;
+  z-index: 100;
+  position: relative;
+}
+
+/* LISTA DE REPERTORIOS */
+.repertorio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.repertorio-item {
+  background: rgba(0,0,0,0.05);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: slideUp 0.5s forwards;
+}
+
+.repertorio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.repertorio-item h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0a0a0a;
+}
+
+.repertorio-item p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: #0a0a0a;
+}
+
+.repertorio-item a {
+  margin-top: 0.5rem;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.no-repertorios {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #0a0a0a;
+  padding: 2rem 0;
+  font-style: italic;
+}
+
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

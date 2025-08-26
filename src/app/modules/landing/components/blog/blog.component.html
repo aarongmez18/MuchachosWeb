@@ -1,0 +1,24 @@
+<div class="blog-container">
+  <h1 class="blog-title">AM Muchachos de Consolación</h1>
+  <h2 class="blog-subtitle">Últimas noticias y artículos</h2>
+
+  <div *ngFor="let noticia of noticias; let i = index" 
+       class="noticia" 
+       [ngClass]="{ 'izquierda': i % 2 === 0, 'derecha': i % 2 !== 0 }"
+       @fadeInUp>
+
+    <div class="noticia-header">
+      <img [src]="noticia.imagen" alt="{{noticia.titulo}}" class="noticia-img">
+
+      <div class="noticia-titulos">
+        <h3>{{ noticia.titulo }}</h3>
+        <h4>{{ noticia.subtitulo }}</h4>
+      </div>
+    </div>
+
+    <p class="noticia-texto">{{ noticia.texto }}</p>
+
+    <!-- separador -->
+    <hr *ngIf="i < noticias.length - 1" class="noticia-separador">
+  </div>
+</div>

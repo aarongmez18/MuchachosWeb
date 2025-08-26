@@ -6,6 +6,9 @@ import { LandingLayoutComponent } from './components/landing-layout.component';
 import { NgModule } from "@angular/core";
 import { LandingRoutingModule } from "./landing-routing.module";
 import { ContactComponent } from "./components/contact/contact.component";
+import { BlogComponent } from "./components/blog/blog.component";
+import { OrdinarioComponent } from "./components/repertorios/ordinario/ordinario.component";
+import { ProcesionalComponent } from "./components/repertorios/procesional/procesional.component";
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { ContactComponent } from "./components/contact/contact.component";
     FooterComponentLayout,
     HomeComponentLayout,
     ContactComponent,
-    LandingLayoutComponent
+    BlogComponent,
+    LandingLayoutComponent,
+    OrdinarioComponent,
+    ProcesionalComponent
   ],
   imports: [
     CommonModule,
