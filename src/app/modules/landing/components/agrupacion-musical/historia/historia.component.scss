@@ -1,0 +1,149 @@
+/* Contenedor general */
+.historia-container {
+  font-family: 'Montserrat', sans-serif;
+  background: url('../../../../../../assets/img/fondos/historia.jpg') center/cover no-repeat;
+  color: #333;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+/* Banner principal */
+.banner {
+    background-image: none;
+  position: relative;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.banner-overlay {
+  background-color: rgba(0, 0, 0, 0.35);
+  width: 100%;
+  padding: 40px 60px;
+  text-align: center;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+}
+
+.banner .title {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.banner .subtitle {
+  font-size: 1.3rem;
+  color: #f0f0f0;
+  margin-top: 10px;
+}
+
+/* Wave */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+}
+
+/* Contenido principal */
+.content {
+  max-width: 1200px;
+  margin: -50px auto 50px auto; 
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.section {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+}
+
+.section-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap-reverse;
+  gap: 30px;
+}
+
+.section-text {
+  flex: 1 1 500px;
+  font-size: 1.1rem;
+}
+
+.section-image {
+  flex: 1 1 400px;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Animaciones */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .banner-overlay {
+    padding: 30px 20px;
+  }
+
+  .banner .title {
+    font-size: 3rem;
+  }
+
+  .banner .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .section-content {
+    flex-direction: column;
+  }
+
+  .section-image, .section-text {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner {
+    height: 400px;
+  }
+
+  .content {
+    margin: -40px 20px 40px 20px;
+    padding: 20px;
+  }
+}

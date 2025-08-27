@@ -52,14 +52,15 @@
       strong {
         color: #fff;
       }
-      a {
-        color: #fff;
-        text-decoration: underline;
-        transition: opacity 0.2s ease;
-      }
-      a:hover {
-        opacity: 0.8;
-      }
+a {
+  color: #FFD700;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
     }
   }
 }

@@ -9,6 +9,10 @@ import { ContactComponent } from "./components/contact/contact.component";
 import { BlogComponent } from "./components/blog/blog.component";
 import { OrdinarioComponent } from "./components/repertorios/ordinario/ordinario.component";
 import { ProcesionalComponent } from "./components/repertorios/procesional/procesional.component";
+import { HistoriaComponent } from './components/agrupacion-musical/historia/historia.component';
+import { EscudoUniformidadComponent } from './components/agrupacion-musical/escudo-uniformidad/escudo-uniformidad.component';
+import { OrganigramaComponent } from './components/agrupacion-musical/organigrama/organigrama.component';
+import { SedeSocialComponent } from './components/agrupacion-musical/sede-social/sede-social.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { ProcesionalComponent } from "./components/repertorios/procesional/proce
     BlogComponent,
     LandingLayoutComponent,
     OrdinarioComponent,
-    ProcesionalComponent
+    ProcesionalComponent,
+    HistoriaComponent,
+    EscudoUniformidadComponent,
+    OrganigramaComponent,
+    SedeSocialComponent
   ],
   imports: [
     CommonModule,
