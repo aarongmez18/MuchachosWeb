@@ -9,10 +9,9 @@
       <!-- Mostrar repertorios si existen -->
       <div *ngIf="repertorios && repertorios.length > 0; else noRepertorios">
         <div *ngFor="let rep of repertorios; let i = index" class="repertorio-item" [style.animationDelay]="i * 0.2 + 's'">
-          <h3>{{ rep.titulo }} ({{ rep.codigoRepertorio }})</h3>
-          <p>Autor: {{ rep.autor }}</p>
-          <p>Duración: {{ rep.duracion }}</p>
-          <a [href]="rep.enlace" target="_blank">Ver archivo</a>
+          <h3>{{ rep.titulo }} </h3>
+          <p><strong>Autor:</strong> {{ rep.autor }}. <strong>Duración:</strong> {{ rep.duracion }}</p>
+          <a [href]="rep.enlace" target="_blank">Escuchar ahora</a>
         </div>
       </div>
 

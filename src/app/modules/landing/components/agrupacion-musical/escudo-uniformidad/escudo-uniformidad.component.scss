@@ -104,6 +104,16 @@
   padding: 10px;
 
 }
+.btn-black {
+  background-color: #000;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.btn-black:hover {
+  background-color: #333;
+  color: #ffd700; /* toque dorado al pasar el mouse */
+  transform: translateY(-2px);
+}
 
 /* Animaciones */
 .fade-in {

@@ -99,6 +99,17 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
+.btn-black {
+  background-color: #000;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.btn-black:hover {
+  background-color: #333;
+  color: #ffd700; 
+  transform: translateY(-2px);
+}
+
 .escudo-image {
   border-radius: 15px;
   padding: 10px;

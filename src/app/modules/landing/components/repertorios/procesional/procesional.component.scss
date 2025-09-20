@@ -10,7 +10,7 @@ main {
   background: url('../../../../../../assets/img/fondos/fondo1.jpeg') center/cover no-repeat;
   min-height: 100vh;
   background-attachment: fixed;
-  color: #fff;
+  color: #6b6b6b;
   position: relative;
   z-index: -2;
 }
@@ -52,7 +52,8 @@ main::before {
 .repertorio-item {
   background: rgba(0,0,0,0.05);
   border-radius: 10px;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
+  margin: 20px;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -67,7 +68,7 @@ main::before {
 
 .repertorio-item h3 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #0a0a0a;
 }
 

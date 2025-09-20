@@ -1,0 +1,36 @@
+main{
+
+  font-family: Inter, sans-serif;
+  background: #FAFAFA;
+  min-height: 100vh;
+  background-attachment: fixed;
+  color: #fff;
+
+
+}
+ .btn-gold {
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+    }
+    .btn-black {
+      background-color: black;
+      color: white;
+    }
+    .contenedor-link {
+      background-size: cover;
+      background-position: center;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .contenedor-link:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
