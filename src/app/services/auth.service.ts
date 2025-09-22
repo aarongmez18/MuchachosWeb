@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private router: Router) { }
+
+  private apiUrl = 'http://localhost:8080/api/auth';
+
+  constructor(private http: HttpClient, private readonly router: Router) { }
 
   setToken(token: string): void {
     localStorage.setItem('token', token);
@@ -18,17 +23,20 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.getToken() !== null;
   }
+
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
-  login({ email, password }: any): Observable<any> {
-    if (email === 'bhavya@gmail.com' && password === 'bhavya123') {
-      this.setToken('abcdefghijklmnopqrstuvwxyz');
-      return of({ name: 'Bhavya Popat', email: 'bhavya@gmail.com' });
-    }
 
-
-    return throwError(new Error('Failed to login'));
+  login(credentials: { username: string; password: string }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/signin`, credentials)
+      .pipe(
+        tap(response => {
+          if (response && response.accessToken) {
+            this.setToken(response.accessToken);
+          }
+        })
+      );
   }
 }

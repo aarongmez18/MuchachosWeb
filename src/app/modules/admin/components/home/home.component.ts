@@ -1,4 +1,7 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NoticiaRequest, NoticiaService } from 'src/app/services/noticia.service';
+ // ajusta según tu ruta
 
 @Component({
   selector: 'app-home',
@@ -8,33 +11,34 @@ import { Component, AfterViewInit } from '@angular/core';
     './home.component.scss',
   ],
 })
-export class HomeComponent implements AfterViewInit {
-  loadAPI: Promise<any>;
+export class HomeComponent {
 
-  constructor() {
-    this.loadAPI = new Promise((resolve) => {
-      this.loadScript();
-      resolve(true);
-    });
+  constructor(private noticiaService: NoticiaService) {}
+
+  noticiaForm = new FormGroup({
+    titulo: new FormControl('', [Validators.required, Validators.maxLength(225)]),
+    subtitulo: new FormControl('', [Validators.required, Validators.maxLength(225)]),
+    imagenURL: new FormControl('', [Validators.maxLength(255)]),
+    texto: new FormControl('', [Validators.required, Validators.maxLength(4000)]),
+  });
+
+  private mapFormToNoticia(): NoticiaRequest {
+    const f = this.noticiaForm.value;
+    return {
+      titulo: f.titulo || '',
+      subtitulo: f.subtitulo || '',
+      imagenURL: f.imagenURL || '',
+      texto: f.texto || '',
+    };
   }
 
-  ngAfterViewInit(): void {
-    this.loadAPI = new Promise((resolve) => {
-      this.loadScript();
-      resolve(true);
-    });
-  }
-
-  loadScript() {
-    var dynamicScripts = ['../../assets/js/dashboard.js'];
-
-    for (var i = 0; i < dynamicScripts.length; i++) {
-      let node = document.createElement('script');
-      node.src = dynamicScripts[i];
-      node.type = 'text/javascript';
-      node.async = false;
-      node.charset = 'utf-8';
-      document.getElementsByTagName('head')[0].appendChild(node);
+  onSubmitNoticia(): void {
+    if (this.noticiaForm.valid) {
+      const noticia: NoticiaRequest = this.mapFormToNoticia();
+      this.noticiaService.saveNoticia(noticia).subscribe({
+        next: () => alert('Noticia guardada con éxito'),
+        error: (err) => alert('Error al guardar noticia: ' + err.message)
+      });
     }
   }
 }

@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { BlankComponent } from './components/blank/blank.component';
+import { ReactiveFormsModule } from '@angular/forms'; 
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BlankComponent } from './components/blank/blank.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
