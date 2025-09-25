@@ -1,52 +1,12 @@
-/* BODY CON IMAGEN DE FONDO */
-main {
-  display: flex;
-  justify-content: center; 
-  align-items: flex-start;
-  flex-direction: column;
-  margin: 0;
-  padding: 6rem 2rem; 
-  font-family: Inter, sans-serif;
-  background: url('../../../../../../assets/img/fondos/fondo1.jpeg') center/cover no-repeat;
-  min-height: 100vh;
-  background-attachment: fixed;
-  color: #6b6b6b;
-  position: relative;
-  z-index: -2;
-}
-
-/* OVERLAY OSCURO */
-main::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: -1;
-}
 
 /* CONTENEDOR CENTRAL */
 .repertorio-container {
-  width: 90%; 
-  max-width: 1200px;
-  margin: 0 auto; 
-  background: rgba(255, 255, 255, 0.95); 
+  font-family: 'Montserrat', sans-serif;
   color: #333;
-  border-radius: 16px;
-  padding: 3rem 4rem;
-  backdrop-filter: blur(10px); 
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-  animation: fadeIn 1s ease forwards;
-  z-index: 100;
-  position: relative;
-}
-
-/* LISTA DE REPERTORIOS */
-.repertorio-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
+  overflow-x: hidden;
+  background-color: black;
+  min-height: 100vh;
+  background-attachment: fixed; 
 }
 
 .repertorio-item {
@@ -91,6 +51,236 @@ main::before {
   padding: 2rem 0;
   font-style: italic;
 }
+
+/* Banner principal */
+.banner {
+  position: relative;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.banner-overlay {
+  background-color: rgba(0, 0, 0, 0.35);
+  padding: 40px 60px;
+  text-align: center;
+  border-radius: 10px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+}
+
+.banner .title {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.banner .subtitle {
+  font-size: 1.3rem;
+  color: #f0f0f0;
+  margin-top: 10px;
+}
+
+/* Wave */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+}
+
+/* Contenido principal */
+.content {
+  max-width: 1200px;
+  margin: -50px auto 50px auto; 
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.section {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+}
+
+.section-content {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap-reverse;
+  gap: 30px;
+}
+
+.section-text {
+  flex: 1 1 500px;
+  font-size: 1.1rem;
+}
+
+.section-image {
+  flex: 1 1 400px;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.btn-black {
+  background-color: #000;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.btn-black:hover {
+  background-color: #333;
+  color: #ffd700; 
+  transform: translateY(-2px);
+}
+
+.escudo-image {
+  border-radius: 15px;
+  padding: 10px;
+}
+
+/* Animaciones */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Contenedor horizontal para Musical y Artística */
+.horizontal-sections {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap; /* pasa a vertical si no cabe */
+}
+
+/* Cada subsección */
+.sub-section {
+
+  min-width: 300px;
+}
+
+/* Team row dentro de subsección */
+.team-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.team-member {
+  flex: 1 1 calc(50% - 10px);
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.team-member:hover {
+  transform: translateY(-2px);
+}
+
+.team-member .role {
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+.team-member .member-name {
+  font-weight: 500;
+  color: #555;
+}
+/* Responsive */
+@media (max-width: 992px) {
+  .banner-overlay {
+    padding: 30px 20px;
+  }
+
+  .banner .title {
+    font-size: 3rem;
+  }
+
+  .banner .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .section-content {
+    flex-direction: column;
+  }
+
+  .section-image, .section-text {
+    flex: 1 1 100%;
+  }
+
+  .team-member {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-sections {
+    flex-direction: column;
+  }
+
+  .sub-section {
+    flex: 1 1 100%;
+  }
+
+  .team-member {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner {
+    height: 400px;
+  }
+
+  .content, .section {
+    margin: 40px 20px;
+    padding: 20px;
+  }
+
+  .team-member {
+    flex: 1 1 100%;
+  }
+
+  .member-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 
 
 /* ANIMACIONES */
