@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   // Formulario reactivo
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
 
   loading = false;     // Para mostrar spinner o deshabilitar botón
@@ -29,8 +29,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(): void {
+    console.log('🚀 Formulario enviado');
     this.errorMessage = '';
     if (this.loginForm.invalid) {
+      console.log('⚠️ Formulario inválido');
       return; // no enviar si el formulario no es válido
     }
 

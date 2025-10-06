@@ -1,24 +1,19 @@
+<div class="blog-header">
+  <h1 class="blog-title">Noticias</h1>
+  <h2 class="blog-subtitle">Últimas noticias y artículos de la Agrupación Musical Muchachos de Consolación</h2>
+</div>
 <div class="blog-container">
-  <h1 class="blog-title">AM Muchachos de Consolación</h1>
-  <h2 class="blog-subtitle">Últimas noticias y artículos</h2>
+  <div *ngFor="let noticia of noticias; let i = index" class="noticia" @fadeInUp>
+    <img [src]="noticia.imagen" alt="{{noticia.titulo}}" class="noticia-img">
 
-  <div *ngFor="let noticia of noticias; let i = index" 
-       class="noticia" 
-       [ngClass]="{ 'izquierda': i % 2 === 0, 'derecha': i % 2 !== 0 }"
-       @fadeInUp>
-
-    <div class="noticia-header">
-      <img [src]="noticia.imagen" alt="{{noticia.titulo}}" class="noticia-img">
-
-      <div class="noticia-titulos">
-        <h3>{{ noticia.titulo }}</h3>
-        <h4>{{ noticia.subtitulo }}</h4>
-      </div>
+    <div class="noticia-info">
+      <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>
+      <h4 class="noticia-subtitulo">{{ noticia.subtitulo }}</h4>
+      <span class="noticia-fecha">{{ noticia.fecha | date:'longDate' }}</span>
+      <p class="noticia-texto">{{ noticia.texto }}</p>
     </div>
 
-    <p class="noticia-texto">{{ noticia.texto }}</p>
-
-    <!-- separador -->
-    <hr *ngIf="i < noticias.length - 1" class="noticia-separador">
+    <hr class="noticia-separador" *ngIf="i < noticias.length - 1">
   </div>
 </div>
+

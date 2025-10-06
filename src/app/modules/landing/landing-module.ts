@@ -14,6 +14,7 @@ import { EscudoUniformidadComponent } from './components/agrupacion-musical/escu
 import { OrganigramaComponent } from './components/agrupacion-musical/organigrama/organigrama.component';
 import { SedeSocialComponent } from './components/agrupacion-musical/sede-social/sede-social.component';
 
+
 @NgModule({
   declarations: [
     HeaderComponentLayout,

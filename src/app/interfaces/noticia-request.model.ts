@@ -4,3 +4,14 @@ export interface NoticiaRequest {
   imagenURL?: string;
   texto: string;
 }
+export interface Marcha {
+  id: number;
+  titulo: string;
+  autor?: string;
+  codigoRepertorio?: string;
+  duracion?: string;
+  enlace?: string;
+}
+
+
+

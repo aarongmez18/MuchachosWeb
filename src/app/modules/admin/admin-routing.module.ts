@@ -2,7 +2,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { BlankComponent } from './components/blank/blank.component';
+
 
 const routes: Routes = [
   {
@@ -10,7 +10,6 @@ const routes: Routes = [
     component: AdminDashboardComponent,
     children: [
       { path: 'home', component: HomeComponent },
-      { path: 'blank', component: BlankComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },

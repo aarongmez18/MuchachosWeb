@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
-import { BlankComponent } from './components/blank/blank.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
 
 
@@ -18,7 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     SidebarComponent,
     HomeComponent,
-    BlankComponent
   ],
   imports: [
     CommonModule,

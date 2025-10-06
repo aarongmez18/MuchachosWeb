@@ -1,19 +1,20 @@
-<main>
-  <div class="repertorio-container">
-    <h1>Repertorio Ordinario</h1>
-    <p>
-      Nuestra formación trabaja también el denominado repertorio ordinario que recoge las categorías de obras de pasacalles que anteceden en ciertas ocasiones a nuestras actuaciones y un repertorio de adaptaciones para amenizar las cabalgatas de Reyes Magos en la que nuestra banda toma el sobrenombre de Los Beduinos de Consolación.
-      A continuación, se detallan este repertorio en distintas categorías.
-    </p>
+<main class="repertorio-container">
+      <!-- Banner principal -->
+  <div class="banner">
+    <div class="banner-overlay">
+      <h1 class="title">REPERTORIO ORDINARIO</h1>
+      <h3 class="subtitle"><em>Nuestra formación trabaja también el denominado repertorio ordinario que recoge las categorías de obras de pasacalles que anteceden en ciertas ocasiones a nuestras actuaciones y un repertorio de adaptaciones para amenizar las cabalgatas de Reyes Magos en la que nuestra banda toma el sobrenombre de Los Beduinos de Consolación.
+      A continuación, se detallan este repertorio en distintas categorías.</em></h3>
+    </div>
+  </div>
 
-    <div class="repertorio-list">
+    <div class="section fade-in">
       <!-- Mostrar repertorios si existen -->
       <div *ngIf="repertorios && repertorios.length > 0; else noRepertorios">
         <div *ngFor="let rep of repertorios; let i = index" class="repertorio-item" [style.animationDelay]="i * 0.2 + 's'">
-          <h3>{{ rep.titulo }} ({{ rep.codigoRepertorio }})</h3>
-          <p>Autor: {{ rep.autor }}</p>
-          <p>Duración: {{ rep.duracion }}</p>
-          <a [href]="rep.enlace" target="_blank">Escuchar marcha</a>
+          <h3><strong>{{ rep.titulo }} </strong><em>- {{ rep.autor }}</em></h3>
+          <p><strong>Duración: </strong> <em>{{ rep.duracion }}</em></p>
+          <a [href]="rep.enlace" target="_blank" class="listen-link">Escuchar ahora</a>
         </div>
       </div>
 
@@ -22,6 +23,6 @@
         <p class="no-repertorios">Aún no hay repertorios disponibles.</p>
       </ng-template>
     </div>
-  </div>
 </main>
+
 

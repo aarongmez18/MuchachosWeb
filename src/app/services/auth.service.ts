@@ -35,6 +35,7 @@ export class AuthService {
         tap(response => {
           if (response && response.accessToken) {
             this.setToken(response.accessToken);
+            localStorage.setItem('token', response.accessToken);
           }
         })
       );

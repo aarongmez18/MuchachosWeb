@@ -28,7 +28,7 @@
 
 .repertorio-item h3 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #0a0a0a;
 }
 
@@ -40,7 +40,13 @@
 
 .repertorio-item a {
   margin-top: 0.5rem;
-  color: #007bff;
+  color: #0a0a0a;
+  text-decoration: underline;
+}
+
+.repertorio-item a:hover {
+  margin-top: 0.5rem;
+  color: #4b4b4b;
   text-decoration: underline;
 }
 
@@ -85,7 +91,7 @@
 }
 
 .banner .subtitle {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #f0f0f0;
   margin-top: 10px;
 }
