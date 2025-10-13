@@ -39,8 +39,8 @@ export class HomeComponent implements OnInit {
 marchaForm = new FormGroup({
   titulo: new FormControl('', [Validators.required, Validators.maxLength(225)]),
   autor: new FormControl('', [Validators.required, Validators.maxLength(225)]),
-  codigoRepertorio: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-  duracion: new FormControl('', [Validators.required]), 
+  codigoRepertorio: new FormControl('', [Validators.required]),
+  duracion: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]), 
   enlace: new FormControl('', [Validators.required, Validators.maxLength(225)]),
 });
 
@@ -66,13 +66,38 @@ marchaForm = new FormGroup({
   });
 }
 
-convertirADuracionISO(tiempo: string): string {
-  const [hours, minutes] = tiempo.split(':').map(Number);
-  let duracion = 'PT';
-  if (hours > 0) duracion += `${hours}H`;
-  if (minutes > 0) duracion += `${minutes}M`;
-  return duracion || 'PT0M';
+// Convierte PTnHnMnS a segundos
+parseISODurationToSeconds(duration: string): number {
+  const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
+  const matches = duration.match(regex);
+
+  if (!matches) return 0;
+
+  const hours = parseInt(matches[1] || '0', 10);
+  const minutes = parseInt(matches[2] || '0', 10);
+  const seconds = parseInt(matches[3] || '0', 10);
+
+  return hours * 3600 + minutes * 60 + seconds;
 }
+
+// Convierte segundos a HH:MM:SS
+formatSegundos(hhmmss: number): string {
+  const horas = Math.floor(hhmmss / 3600);
+  const minutos = Math.floor((hhmmss % 3600) / 60);
+  const segundos = hhmmss % 60;
+
+  const pad = (n: number) => n.toString().padStart(2, '0');
+
+  return `${pad(horas)}:${pad(minutos)}:${pad(segundos)}`;
+}
+
+// Combinar las dos funciones para usar en template
+formatISODuration(duration: string): string {
+  const segundos = this.parseISODurationToSeconds(duration);
+  return this.formatSegundos(segundos);
+}
+
+
 
 mapFormToMarcha(): Marcha {
   const f = this.marchaForm.value;
@@ -81,7 +106,7 @@ mapFormToMarcha(): Marcha {
   titulo: String(f.titulo || ''),
   autor: String(f.autor || ''),
   enlace: String(f.enlace || ''),
-  duracion: this.convertirADuracionISO(String(f.duracion || '')),
+  duracion: Number(f.duracion || 0),
   id: 0,
 };
 }
@@ -124,6 +149,8 @@ onSubmitMarcha(): void {
       },
       error: (err) => this.showError(`Error al guardar marcha: ${err.message}`)
     });
+  }else{
+    this.showError('Formulario inválido');
   }
 }
 
@@ -151,18 +178,32 @@ onSubmitMarcha(): void {
     this.showConfirmModal = true;
   }
 
-  confirmDelete(): void {
-    if (this.noticiaIdToDelete !== null) {
-      this.noticiaService.deleteNoticia(this.noticiaIdToDelete).subscribe({
-        next: () => {
-          this.loadNoticias();
-          this.showSuccess('Noticia eliminada correctamente');
-        },
-        error: (err) => this.showError(`Error al eliminar noticia: ${err.message}`)
-      });
-    }
-    this.showConfirmModal = false;
+confirmDelete(): void {
+  if (this.marchaIdToDelete !== null) {
+    this.marchaService.deleteMarcha(this.marchaIdToDelete).subscribe({
+      next: () => {
+        this.loadMarchas();
+        this.showSuccess('Marcha eliminada correctamente');
+      },
+      error: (err) => this.showError(`Error al eliminar marcha: ${err.message}`)
+    });
+  } else if (this.noticiaIdToDelete !== null) {
+    this.noticiaService.deleteNoticia(this.noticiaIdToDelete).subscribe({
+      next: () => {
+        this.loadNoticias();
+        this.showSuccess('Noticia eliminada correctamente');
+      },
+      error: (err) => this.showError(`Error al eliminar noticia: ${err.message}`)
+    });
   }
+
+  this.showConfirmModal = false;
+  this.marchaIdToDelete = null;
+  this.noticiaIdToDelete = null;
+}
+
+
+  
 
   cancelDelete(): void {
     this.showConfirmModal = false;
@@ -185,7 +226,9 @@ onSubmitMarcha(): void {
         },
         error: (err) => this.showError(`Error al guardar noticia: ${err.message}`)
       });
-    }
+    }else{
+    this.showError('Formulario inválido');
+  }
   }
 
   showSuccess(message: string): void {

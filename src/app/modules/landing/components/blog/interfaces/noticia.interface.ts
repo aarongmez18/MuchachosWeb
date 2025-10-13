@@ -2,6 +2,6 @@ export interface Noticia {
   titulo: string;
   subtitulo: string;
   fecha?: Date;
-  imagen: string;
+  imagenURL: string;
   texto: string;
 }

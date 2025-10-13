@@ -4,23 +4,25 @@
   <div class="banner">
     <div class="banner-overlay">
       <h1 class="title">REPERTORIO PROCESIONAL</h1>
-      <h3 class="subtitle"><em>El repertorio de Los Muchachos de Consolación es un repertorio cuidado, pensado para las Hermandades que acompañamos a lo largo del año.<br> Un repertorio con marchas clásicas del estilo un repertorio propio con obras de gran calidad de compositores reconocidos y con marchas contemporáneas de las grandes agrupaciones del momento seleccionadas por nuestra dirección musical</em></h3>
+      <h3 class="subtitle">
+        <em>El repertorio de Los Muchachos de Consolación es un repertorio cuidado, pensado para las Hermandades que acompañamos a lo largo del año.<br>
+        Un repertorio con marchas clásicas del estilo, un repertorio propio con obras de gran calidad de compositores reconocidos y con marchas contemporáneas de las grandes agrupaciones del momento seleccionadas por nuestra dirección musical.</em>
+      </h3>
+    </div>
+  </div>
+ <div class="section fade-in">
+  <!-- Mostrar repertorios si existen -->
+  <div *ngIf="repertoriosProcesional && repertoriosProcesional.length > 0; else noRepertorios">
+    <div *ngFor="let rep of repertoriosProcesional; let i = index" class="repertorio-item" [style.animationDelay]="i * 0.2 + 's'">
+      <h3><strong>{{ rep.titulo }} </strong><em>- {{ rep.autor }}</em></h3>
+      <p><strong>Duración: </strong> <em>{{ rep.duracion != null ? formatISODuration(rep.duracion.toString()) : '' }}</em></p>
+
+      <a [href]="rep.enlace" target="_blank" class="listen-link">Escuchar ahora</a>
     </div>
   </div>
 
-  <div class="section fade-in">
-    <!-- Mostrar repertorios si existen -->
-      <div *ngIf="repertorios && repertorios.length > 0; else noRepertorios">
-        <div *ngFor="let rep of repertorios; let i = index" class="repertorio-item" [style.animationDelay]="i * 0.2 + 's'">
-          <h3><strong>{{ rep.titulo }} </strong><em>- {{ rep.autor }}</em></h3>
-          <p><strong>Duración: </strong> <em>{{ rep.duracion }}</em></p>
-          <a [href]="rep.enlace" target="_blank" class="listen-link">Escuchar ahora</a>
-        </div>
-      </div>
-      <ng-template #noRepertorios>
-        <p class="no-repertorios">No hay repertorios disponibles en este momento. Por favor, vuelva más tarde.</p>
-      </ng-template>
-  </div>
-
+  <ng-template #noRepertorios>
+    <p class="no-repertorios">No hay repertorios disponibles en este momento. Por favor, vuelva más tarde.</p>
+  </ng-template>
+</div>
 </main>
-

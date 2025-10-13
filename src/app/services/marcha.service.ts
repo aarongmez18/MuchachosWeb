@@ -16,7 +16,7 @@ export class MarchaService {
   }
 
   saveMarcha(marcha: Marcha): Observable<Marcha> {
-    return this.http.put<Marcha>(`${this.apiUrl}/save`, marcha);
+    return this.http.post<Marcha>(`${this.apiUrl}/save`, marcha);
   }
 
   deleteMarcha(id: number): Observable<void> {

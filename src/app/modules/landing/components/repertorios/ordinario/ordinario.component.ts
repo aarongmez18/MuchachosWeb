@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Marcha } from 'src/app/interfaces/noticia-request.model';
+import { MarchaService } from 'src/app/services/marcha.service';
 
 @Component({
   selector: 'app-ordinario',
@@ -6,55 +8,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ordinario.component.scss']
 })
 export class OrdinarioComponent implements OnInit{
+   repertoriosOrdinarios: Marcha[] = [];
+  errorMessage = '';
+
+  constructor(private readonly marchaService: MarchaService) {}
+
   ngOnInit(): void {
-   
+    this.loadOrdinarioRepertorios();
   }
-  
-  repertorios = [
-    {
-      id: 1,
-      codigoRepertorio: 'REP_PRO_001',
-      titulo: 'Marcha Triunfal',
-      autor: 'Juan Pérez',
-      enlace: 'https://example.com/marcha_triunfal.pdf',
-      fechaCreacion: '2025-08-26',
-      duracion: '00:03:45'
-    },
-    {
-      id: 2,
-      codigoRepertorio: 'REP_PRO_002',
-      titulo: 'Himno de la Agrupación',
-      autor: 'María López',
-      enlace: 'https://example.com/himno_agrupacion.pdf',
-      fechaCreacion: '2025-08-26',
-      duracion: '00:04:10'
-    },
-    {
-      id: 3,
-      codigoRepertorio: 'REP_ORD_001',
-      titulo: 'Pasodoble Clásico',
-      autor: 'Carlos García',
-      enlace: 'https://example.com/pasodoble_clasico.pdf',
-      fechaCreacion: '2025-08-26',
-      duracion: '00:02:50'
-    },
-    {
-      id: 4,
-      codigoRepertorio: 'REP_ORD_002',
-      titulo: 'Scherzo Musical',
-      autor: 'Ana Fernández',
-      enlace: 'https://example.com/scherzo_musical.pdf',
-      fechaCreacion: '2025-08-26',
-      duracion: '00:05:00'
-    },
-    {
-      id: 5,
-      codigoRepertorio: 'REP_PRO_003',
-      titulo: 'Obertura Festiva',
-      autor: 'Miguel Sánchez',
-      enlace: 'https://example.com/overture_festiva.pdf',
-      fechaCreacion: '2025-08-26',
-      duracion: '00:06:15'
-    }
-  ];
+
+  loadOrdinarioRepertorios(): void {
+    this.marchaService.getAllMarchas().subscribe({
+      next: (data: Marcha[]) => {
+        // Filtramos solo los que tienen código "ORDINARIO"
+        this.repertoriosOrdinarios = data.filter(rep => rep.codigoRepertorio === 'ORDINARIO');
+      },
+      error: (err) => {
+        this.errorMessage = `Error al cargar repertorios: ${err.message}`;
+      }
+    });
+  }
+
+    // Convierte PTnHnMnS a segundos
+parseISODurationToSeconds(duration: string): number {
+  const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
+  const matches = duration.match(regex);
+
+  if (!matches) return 0;
+
+  const hours = parseInt(matches[1] || '0', 10);
+  const minutes = parseInt(matches[2] || '0', 10);
+  const seconds = parseInt(matches[3] || '0', 10);
+
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+// Convierte segundos a HH:MM:SS
+formatSegundos(hhmmss: number): string {
+  const horas = Math.floor(hhmmss / 3600);
+  const minutos = Math.floor((hhmmss % 3600) / 60);
+  const segundos = hhmmss % 60;
+
+  const pad = (n: number) => n.toString().padStart(2, '0');
+
+  return `${pad(horas)}:${pad(minutos)}:${pad(segundos)}`;
+}
+
+// Combinar las dos funciones para usar en template
+formatISODuration(duration: string): string {
+  const segundos = this.parseISODurationToSeconds(duration);
+  return this.formatSegundos(segundos);
+}
 }

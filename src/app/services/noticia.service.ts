@@ -18,7 +18,7 @@ export class NoticiaService {
   constructor(private http: HttpClient) {}
 
   saveNoticia(noticia: NoticiaRequest): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/save`, noticia);
+    return this.http.post<any>(`${this.apiUrl}/save`, noticia);
   }
 
   getAllNoticias(): Observable<any> {

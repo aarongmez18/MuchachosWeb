@@ -30,6 +30,7 @@ export class BlogComponent implements OnInit {
     this.noticiaService.getAllNoticias().subscribe({
       next: (data) => {
         this.noticias = data;
+        console.log('Noticias cargadas:', this.noticias);
       },
       error: (err) => {
         console.error('Error cargando noticias', err);

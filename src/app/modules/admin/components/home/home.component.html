@@ -45,7 +45,7 @@
     <table class="table table-striped table-bordered">
 <thead class="table-dark">
   <tr>
-    <th>Nombre</th>
+    <th>Titulo</th>
     <th>Autor</th> 
     <th>Código Repertorio</th> 
     <th>Duración</th> 
@@ -59,7 +59,7 @@
     <td>{{ marcha.titulo }}</td>
     <td>{{ marcha.autor }}</td>
     <td>{{ marcha.codigoRepertorio }}</td>
-    <td>{{ marcha.duracion }}</td>
+    <td>{{ formatISODuration(marcha.duracion) }}</td>
     <td>
       <a *ngIf="marcha.enlace" [href]="marcha.enlace" target="_blank">Ver enlace</a>
     </td>
@@ -83,28 +83,59 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="marchaForm" (ngSubmit)="onSubmitMarcha()">
+
+          <!-- Título -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="titulo" class="form-control" placeholder="Título" />
+            <label>Título</label>
+                        <div class="text-danger mt-1" *ngIf="marchaForm.get('titulo')?.errors && marchaForm.get('titulo')?.touched">
+                        <span *ngIf="marchaForm.get('titulo')?.errors?.['required']">El título es obligatorio.</span>
+                        <span *ngIf="marchaForm.get('titulo')?.errors?.['maxlength']">Máximo 225 caracteres permitidos.</span>
+                      </div>
+          </div>
+
                     <!-- Autor -->
           <div class="form-floating mt-2">
             <input type="text" formControlName="autor" class="form-control" placeholder="Autor" />
             <label>Autor</label>
+                        <div class="text-danger mt-1" *ngIf="marchaForm.get('autor')?.errors && marchaForm.get('autor')?.touched">
+              <span *ngIf="marchaForm.get('autor')?.errors?.['required']">El autor es obligatorio.</span>
+              <span *ngIf="marchaForm.get('autor')?.errors?.['maxlength']">Máximo 225 caracteres permitidos.</span>
+            </div>
           </div>
 
           <!-- Código Repertorio -->
           <div class="form-floating mt-2">
-            <input type="text" formControlName="codigo_repertorio" class="form-control" placeholder="Código de repertorio" />
+            <select formControlName="codigoRepertorio" class="form-select">
+              <option value="" disabled selected>Selecciona un código</option>
+              <option value="PROCESIONAL">PROCESIONAL</option>
+              <option value="ORDINARIO">ORDINARIO</option>
+              <option value="JUVENIL">JUVENIL</option>
+            </select>
             <label>Código Repertorio</label>
+            <div class="text-danger mt-1" *ngIf="marchaForm.get('codigoRepertorio')?.errors && marchaForm.get('codigoRepertorio')?.touched">
+              <span *ngIf="marchaForm.get('codigoRepertorio')?.errors?.['required']">El código de repertorio es obligatorio.</span>
+            </div>
           </div>
+
 
           <!-- Duración -->
           <div class="form-floating mt-2">
-            <input type="text" formControlName="duracion" class="form-control" placeholder="Duración" />
-            <label>Duración</label>
+            <input type="number" formControlName="duracion" class="form-control" placeholder="Duración " />
+            <label>Duración en segundos</label>
+                        <div class="text-danger mt-1" *ngIf="marchaForm.get('duracion')?.errors && marchaForm.get('duracion')?.touched">
+              <span *ngIf="marchaForm.get('duracion')?.errors?.['required']">La duración es obligatoria.</span>
+            </div>
           </div>
 
           <!-- Enlace -->
           <div class="form-floating mt-2">
             <input type="text" formControlName="enlace" class="form-control" placeholder="Enlace" />
             <label>Enlace</label>
+                        <div class="text-danger mt-1" *ngIf="marchaForm.get('enlace')?.errors && marchaForm.get('enlace')?.touched">
+              <span *ngIf="marchaForm.get('enlace')?.errors?.['required']">El enlace es obligatorio.</span>
+              <span *ngIf="marchaForm.get('enlace')?.errors?.['maxlength']">Máximo 225 caracteres permitidos.</span>
+            </div>
           </div>
 
           <button type="submit" class="btn btn-dark mt-4 w-100 py-2">Guardar marcha</button>

@@ -9,6 +9,15 @@ export interface Marcha {
   titulo: string;
   autor?: string;
   codigoRepertorio?: string;
+  duracion?: number;
+  enlace?: string;
+}
+
+export interface MarchaResponse {
+  id: number;
+  titulo: string;
+  autor?: string;
+  codigoRepertorio?: string;
   duracion?: string;
   enlace?: string;
 }

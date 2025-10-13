@@ -4,7 +4,7 @@
 </div>
 <div class="blog-container">
   <div *ngFor="let noticia of noticias; let i = index" class="noticia" @fadeInUp>
-    <img [src]="noticia.imagen" alt="{{noticia.titulo}}" class="noticia-img">
+    <img [src]="noticia.imagenURL" alt="{{noticia.titulo}}" class="noticia-img">
 
     <div class="noticia-info">
       <h3 class="noticia-titulo">{{ noticia.titulo }}</h3>

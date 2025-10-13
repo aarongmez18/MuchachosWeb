@@ -7,34 +7,61 @@
 
       </div>
       <div class="col-md-6 text-center">
-        <img src="../../../../../../assets/img/fondos/historia.jpg"alt="Imagen hero" class="img-fluid rounded">
+        <img src="../../../../../../assets/img/fondos/bandera.jpg"alt="Imagen hero" class="img-fluid rounded">
       </div>
     </div>
   </section>
 
-    <!-- SOBRE MUCHACHOS -->
-  <section class="py-5">
-    <div class="container">
-      <h1 class="text-end mb-4">Conoce más sobre nosotros</h1>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            Historia
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            Semana Santa
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            Contacto
-          </a>
-        </div>
+  <!-- ÚLTIMA NOTICIA -->
+<section *ngIf="ultimaNoticia" class="bg-light py-5">
+  <div class="container">
+    <h1 class="mb-4">Última noticia</h1>
+    <div class="row align-items-center g-4">
+      
+      <!-- Imagen -->
+      <div class="col-md-5">
+        <img *ngIf="ultimaNoticia.imagenURL" [src]="ultimaNoticia.imagenURL" 
+             alt="{{ ultimaNoticia.titulo }}" class="img-fluid rounded">
       </div>
+      
+      <!-- Texto -->
+      <div class="col-md-7 text-dark">
+        <h2 class="mb-3">{{ ultimaNoticia.titulo }}</h2>
+        <h5 class="mb-2"><em>{{ ultimaNoticia.subtitulo }}</em></h5>
+        <span class="mb-3 d-block">{{ ultimaNoticia.fecha | date:'longDate' }}</span>
+        <p>{{ ultimaNoticia.texto }}</p>
+        <p><a href="/noticias" class="btn btn-light">Leer más</a></p>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+<!-- SOBRE MUCHACHOS -->
+<section class="py-5">
+<div class="container">
+  <h1 class="text-end mb-4">Conoce más sobre nosotros</h1>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <a href="/agrupacion/historia" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/PHOTO-2025-10-07-20-47-522.jpg');">
+        Historia
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/PHOTO-2025-10-07-20-47-52.jpg');">
+        Semana Santa
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="/contacto" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/PHOTO-2025-10-07-20-47-52 (1).jpg');">
+        Noticias
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
 
   <!-- YOUTUBE -->
   <section class="bg-light py-5">
@@ -53,28 +80,23 @@
       <h1 class="text-start mb-4">Donde escucharnos</h1>
       <div class="row g-4">
         <div class="col-md-2">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            Spotify
+          <a href="https://open.spotify.com/intl-es/artist/41OasMp4z5tfQB5zvvuXjT" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/logo/spotify.jpg');">
           </a>
         </div>
         <div class="col-md-2">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            Apple Music
+          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/logo/apple-music.svg');">
           </a>
         </div>
         <div class="col-md-2">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            YouTube
+          <a href="https://www.youtube.com/@ammuchachosdeconsolacion" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/logo/youtube.jpg');">
           </a>
         </div>
         <div class="col-md-2">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            Local de ensayos
+          <a href="https://www.instagram.com/ammuchachos/" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/logo/instagram.jpg');">
           </a>
         </div>
         <div class="col-md-2">
-          <a href="#" class="contenedor-link rounded" style="background-image: url('../../../../../../assets/img/fondos/fondo1.jpeg');">
-            Agenda
+          <a href="/contacto" class="contenedor-link rounded border-black border-3" style="background-image: url('../../../../../../assets/img/logo/ubicacion.png');">
           </a>
         </div>
       </div>
