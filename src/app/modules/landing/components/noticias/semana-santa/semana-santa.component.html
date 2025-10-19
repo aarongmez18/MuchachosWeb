@@ -1,0 +1,44 @@
+<div class="container py-5">
+
+  <div *ngIf="loading" class="text-center text-secondary">Cargando eventos...</div>
+  <div *ngIf="errorMessage" class="text-center text-danger">{{ errorMessage }}</div>
+
+  <div *ngFor="let year of anosOrdenados">
+  <div class="p-3 mb-4 text-center rounded" style="background-color: #f0f0f0;">
+    <h2 class="fw-bold mb-0">Semana Santa {{ year }}</h2>
+  </div>
+
+  <div class="row mb-5">
+    <div *ngFor="let evento of eventosPorAno[year]" class="col-12 col-sm-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img *ngIf="evento.imagenURL" [src]="evento.imagenURL" class="card-img-top" alt="{{ evento.titulo }}">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ evento.titulo }}</h5>
+        <h6 *ngIf="evento.subtitulo" class="card-subtitle mb-2 text-muted">{{ evento.subtitulo }}</h6>
+        <p class="card-text mb-1"><strong>Fecha:</strong> {{ evento.diaActuacion | date:'dd/MM/yyyy' }}</p>
+
+          <p *ngIf="evento.horaEvento" class="card-text mb-1"><strong>Hora:</strong> {{ evento.horaEvento }}</p>
+          <p *ngIf="evento.ubicacion" class="card-text mb-1"><strong>Lugar:</strong> {{ evento.ubicacion }}</p>
+          <p *ngIf="evento.texto" class="card-text mt-2 scrollable">{{ evento.texto }}</p>
+          <div class="mt-auto text-end text-muted" style="font-size: 0.8rem;">
+            Creado: {{ evento.fechaCreacion | date:'dd/MM/yyyy' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <section class="py-5" style="background-color: #f0f0f0;">
+    <div class="container">
+      <h1 class="text-start mb-4">De tu interés</h1>
+      <div class="row g-4">
+        <div class="col-md-10">
+            <button class="btn btn-black mb-3" (click)="navigateTo('/blog/noticias')">← Ir a Noticias</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-black mb-3" (click)="navigateTo('/blog/agenda')">Ir a Agenda →</button>
+        </div>
+      </div>
+    </div>
+  </section>

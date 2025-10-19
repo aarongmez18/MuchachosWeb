@@ -13,7 +13,8 @@ import { HistoriaComponent } from './components/agrupacion-musical/historia/hist
 import { EscudoUniformidadComponent } from './components/agrupacion-musical/escudo-uniformidad/escudo-uniformidad.component';
 import { OrganigramaComponent } from './components/agrupacion-musical/organigrama/organigrama.component';
 import { SedeSocialComponent } from './components/agrupacion-musical/sede-social/sede-social.component';
-
+import { PrivacyComponent } from "./components/privacy/privacy.component";
+import { AgendaComponent } from "./components/noticias/agenda/agenda.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { SedeSocialComponent } from './components/agrupacion-musical/sede-social
     FooterComponentLayout,
     HomeComponentLayout,
     ContactComponent,
+    AgendaComponent,
     BlogComponent,
+    PrivacyComponent,
     LandingLayoutComponent,
     OrdinarioComponent,
     ProcesionalComponent,

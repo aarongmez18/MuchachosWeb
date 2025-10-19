@@ -1,11 +1,11 @@
 <div class="px-md-4">
 
-  <!-- Tabla de noticias -->
+  <!-- Tabla de Noticias -->
   <div class="mt-3">
-      <div class="d-flex align-items-center justify-content-between">
-    <h2>Listado de Noticias</h2>
-    <button class="btn btn-dark fw-bolder" (click)="showCreateModal = true">NUEVA NOTICIA</button>
-  </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <h2>Listado de Noticias</h2>
+      <button class="btn btn-dark fw-bolder" (click)="showCreateNoticiaModal = true">NUEVA NOTICIA</button>
+    </div>
     <table class="table table-striped table-bordered">
       <thead class="table-dark">
         <tr>
@@ -23,55 +23,117 @@
           <td><img [src]="noticia.imagenURL" alt="Imagen" width="80" /></td>
           <td>{{ noticia.texto }}</td>
           <td>
-            <button class="btn btn-danger btn-sm" (click)="deleteNoticia(noticia.id)">
-              Eliminar
-            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteNoticia(noticia.id!)">Eliminar</button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
 
-<div class="px-md-4">
-
-  <!-- Tabla de marchas -->
+  <!-- Tabla de Marchas -->
   <div class="mt-3">
     <div class="d-flex align-items-center justify-content-between">
       <h2>Listado de Marchas</h2>
       <button class="btn btn-dark fw-bolder" (click)="showCreateMarchaModal = true">NUEVA MARCHA</button>
     </div>
-
     <table class="table table-striped table-bordered">
-<thead class="table-dark">
-  <tr>
-    <th>Titulo</th>
-    <th>Autor</th> 
-    <th>Código Repertorio</th> 
-    <th>Duración</th> 
-    <th>Enlace</th> 
-    <th>Acciones</th>
-  </tr>
-</thead>
-
-<tbody>
-  <tr *ngFor="let marcha of marchas">
-    <td>{{ marcha.titulo }}</td>
-    <td>{{ marcha.autor }}</td>
-    <td>{{ marcha.codigoRepertorio }}</td>
-    <td>{{ formatISODuration(marcha.duracion) }}</td>
-    <td>
-      <a *ngIf="marcha.enlace" [href]="marcha.enlace" target="_blank">Ver enlace</a>
-    </td>
-    <td>
-      <button class="btn btn-danger btn-sm" (click)="deleteMarcha(marcha.id)">Eliminar</button>
-    </td>
-  </tr>
-</tbody>
-
+      <thead class="table-dark">
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Código Repertorio</th>
+          <th>Duración</th>
+          <th>Enlace</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let marcha of marchas">
+          <td>{{ marcha.titulo }}</td>
+          <td>{{ marcha.autor }}</td>
+          <td>{{ marcha.codigoRepertorio }}</td>
+          <td>{{ formatISODuration(marcha.duracion?.toString() || 'PT0S') }}</td>
+          <td>
+            <a *ngIf="marcha.enlace" [href]="marcha.enlace" target="_blank">Ver enlace</a>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteMarcha(marcha.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
+
+  <!-- Tabla de Agendas -->
+  <div class="mt-3">
+    <div class="d-flex align-items-center justify-content-between">
+      <h2>Listado de Agendas</h2>
+      <button class="btn btn-dark fw-bolder" (click)="showCreateAgendaModal = true">NUEVA AGENDA</button>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Fecha</th>
+          <th>Mapa / Enlace</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agenda of agendas">
+          <td>{{ agenda.titulo }}</td>
+          <td>{{ agenda.texto }}</td>
+          <td>{{ agenda.fechaActuacion | date:'dd/MM/yyyy' }}</td>
+          <td>
+            <a *ngIf="agenda.lugar" [href]="agenda.lugar" target="_blank">Ver mapa</a>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteAgenda(agenda.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tabla de Semana Santa -->
+  <div class="mt-3">
+    <div class="d-flex align-items-center justify-content-between">
+      <h2>Semana Santa</h2>
+      <button class="btn btn-dark fw-bolder" (click)="showCreateSemanaSantaModal = true">NUEVO EVENTO</button>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Título</th>
+          <th>Subtítulo</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Ubicación</th>
+          <th>Mapa</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of semanaSanta">
+          <td>{{ evento.titulo }}</td>
+          <td>{{ evento.subtitulo }}</td>
+          <td>{{ evento.diaActuacion | date:'dd/MM/yyyy' }}</td>
+          <td>{{ evento.horaEvento }}</td>
+          <td>{{ evento.ubicacion }}</td>
+          <td>
+            <a *ngIf="evento.mapaURL" [href]="evento.mapaURL" target="_blank">Ver mapa</a>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="deleteSemanaSanta(evento.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
+
 
 <!-- Modal Crear Marcha -->
 <div class="modal fade" tabindex="-1" [class.show]="showCreateMarchaModal" [style.display]="showCreateMarchaModal ? 'block' : 'none'">
@@ -149,12 +211,12 @@
 
 
 <!-- Modal Crear Noticia -->
-<div class="modal fade" tabindex="-1" [class.show]="showCreateModal" [style.display]="showCreateModal ? 'block' : 'none'">
+<div class="modal fade" tabindex="-1" [class.show]="showCreateNoticiaModal" [style.display]="showCreateNoticiaModal ? 'block' : 'none'">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Añadir noticia</h5>
-        <button type="button" class="btn-close" (click)="showCreateModal = false"></button>
+        <button type="button" class="btn-close" (click)="showCreateNoticiaModal = false"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="noticiaForm" (ngSubmit)="onSubmitNoticia()">
@@ -229,8 +291,166 @@
   </div>
 </div>
 
+<!-- Modal Crear Agenda -->
+<div class="modal fade" tabindex="-1" [class.show]="showCreateAgendaModal" [style.display]="showCreateAgendaModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Añadir Agenda</h5>
+        <button type="button" class="btn-close" (click)="showCreateAgendaModal = false"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="agendaForm" (ngSubmit)="onSubmitAgenda()">
+          
+          <!-- Título -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="titulo" class="form-control" placeholder="Título" />
+            <label>Título</label>
+            <div class="text-danger mt-1" *ngIf="agendaForm.get('titulo')?.errors && agendaForm.get('titulo')?.touched">
+              <span *ngIf="agendaForm.get('titulo')?.errors?.['required']">El título es obligatorio.</span>
+              <span *ngIf="agendaForm.get('titulo')?.errors?.['maxlength']">Máximo 225 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Subtítulo -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="subtitulo" class="form-control" placeholder="Subtítulo" />
+            <label>Subtítulo</label>
+            <div class="text-danger mt-1" *ngIf="agendaForm.get('subtitulo')?.errors && agendaForm.get('subtitulo')?.touched">
+              <span *ngIf="agendaForm.get('subtitulo')?.errors?.['maxlength']">Máximo 225 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Imagen URL -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="imagenURL" class="form-control" placeholder="URL de la imagen" />
+            <label>Imagen URL</label>
+            <div class="text-danger mt-1" *ngIf="agendaForm.get('imagenURL')?.errors && agendaForm.get('imagenURL')?.touched">
+              <span *ngIf="agendaForm.get('imagenURL')?.errors?.['maxlength']">Máximo 200 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Lugar -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="lugar" class="form-control" placeholder="Lugar o enlace" />
+            <label>Lugar / Mapa URL</label>
+            <div class="text-danger mt-1" *ngIf="agendaForm.get('lugar')?.errors && agendaForm.get('lugar')?.touched">
+              <span *ngIf="agendaForm.get('lugar')?.errors?.['maxlength']">Máximo 300 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Texto -->
+          <div class="form-floating mt-2">
+            <textarea formControlName="texto" class="form-control" placeholder="Descripción" style="height: 120px"></textarea>
+            <label>Descripción</label>
+            <div class="text-danger mt-1" *ngIf="agendaForm.get('texto')?.errors && agendaForm.get('texto')?.touched">
+              <span *ngIf="agendaForm.get('texto')?.errors?.['maxlength']">Máximo 2000 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Fecha y hora -->
+          <div class="row mt-2">
+            <div class="col">
+              <label>Fecha del evento</label>
+              <input type="date" formControlName="fechaActuacion" class="form-control" />
+            </div>
+            <div class="col">
+              <label>Hora del evento</label>
+              <input type="time" formControlName="horaEvento" class="form-control" />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-dark mt-4 w-100 py-2">Guardar Agenda</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show" *ngIf="showCreateAgendaModal"></div>
+
+<!-- Modal Crear Semana Santa -->
+<div class="modal fade" tabindex="-1" [class.show]="showCreateSemanaSantaModal" [style.display]="showCreateSemanaSantaModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Añadir Evento Semana Santa</h5>
+        <button type="button" class="btn-close" (click)="showCreateSemanaSantaModal = false"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="semanaSantaForm" (ngSubmit)="onSubmitSemanaSanta()">
+          
+          <!-- Título -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="titulo" class="form-control" placeholder="Título" />
+            <label>Título</label>
+            <div class="text-danger mt-1" *ngIf="semanaSantaForm.get('titulo')?.errors && semanaSantaForm.get('titulo')?.touched">
+              <span *ngIf="semanaSantaForm.get('titulo')?.errors?.['required']">El título es obligatorio.</span>
+              <span *ngIf="semanaSantaForm.get('titulo')?.errors?.['maxlength']">Máximo 225 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Subtítulo -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="subtitulo" class="form-control" placeholder="Subtítulo" />
+            <label>Subtítulo</label>
+            <div class="text-danger mt-1" *ngIf="semanaSantaForm.get('subtitulo')?.errors && semanaSantaForm.get('subtitulo')?.touched">
+              <span *ngIf="semanaSantaForm.get('subtitulo')?.errors?.['maxlength']">Máximo 225 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Ubicación -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="ubicacion" class="form-control" placeholder="Ubicación" />
+            <label>Ubicación</label>
+            <div class="text-danger mt-1" *ngIf="semanaSantaForm.get('ubicacion')?.errors && semanaSantaForm.get('ubicacion')?.touched">
+              <span *ngIf="semanaSantaForm.get('ubicacion')?.errors?.['maxlength']">Máximo 300 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Mapa URL -->
+          <div class="form-floating mt-2">
+            <input type="text" formControlName="mapaURL" class="form-control" placeholder="Mapa URL" />
+            <label>Mapa URL</label>
+            <div class="text-danger mt-1" *ngIf="semanaSantaForm.get('mapaURL')?.errors && semanaSantaForm.get('mapaURL')?.touched">
+              <span *ngIf="semanaSantaForm.get('mapaURL')?.errors?.['maxlength']">Máximo 300 caracteres permitidos.</span>
+            </div>
+          </div>
+
+          <!-- Fecha y hora -->
+          <div class="row mt-2">
+            <div class="col">
+              <label>Fecha del evento</label>
+              <input type="date" formControlName="diaActuacion" class="form-control" />
+            </div>
+            <div class="col">
+              <label>Hora del evento</label>
+              <input type="time" formControlName="horaEvento" class="form-control" />
+            </div>
+          </div>
+
+          <!-- Texto opcional -->
+          <div class="form-floating mt-2">
+            <textarea formControlName="texto" class="form-control" placeholder="Descripción" style="height: 120px"></textarea>
+            <label>Descripción</label>
+          </div>
+
+          <button type="submit" class="btn btn-dark mt-4 w-100 py-2">Guardar Evento</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade show" *ngIf="showCreateSemanaSantaModal"></div>
+
+
+
+
+
 <!-- Fondo modal -->
-<div class="modal-backdrop fade show" *ngIf="showCreateModal"></div>
+<div class="modal-backdrop fade show" *ngIf="showCreateNoticiaModal"></div>
+<div class="modal-backdrop fade show" *ngIf="showCreateMarchaModal"></div>
+<div class="modal-backdrop fade show" *ngIf="showCreateAgendaModal"></div>
+<div class="modal-backdrop fade show" *ngIf="showCreateSemanaSantaModal"></div>
 
 <!-- Modal Confirmación -->
 <div class="modal fade show" tabindex="-1" style="display: block;" *ngIf="showConfirmModal">

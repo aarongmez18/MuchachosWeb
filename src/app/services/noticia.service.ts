@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NoticiaRequest } from '../interfaces/noticia-request.model';
 
-export interface NoticiaRequest {
-  titulo: string;
-  subtitulo?: string;
-  imagenURL?: string;
-  texto: string;
-}
 
 @Injectable({
   providedIn: 'root',

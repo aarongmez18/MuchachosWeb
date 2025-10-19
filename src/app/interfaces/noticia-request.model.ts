@@ -1,4 +1,5 @@
 export interface NoticiaRequest {
+  id: number;
   titulo: string;
   subtitulo: string;
   imagenURL?: string;
@@ -21,6 +22,31 @@ export interface MarchaResponse {
   duracion?: string;
   enlace?: string;
 }
+export interface SemanaSanta {
+  id: number;
+  titulo: string;
+  subtitulo?: string;
+  imagenURL?: string;
+  texto?: string;
+  diaActuacion: string; // ISO date string
+  mapaURL?: string;
+  ubicacion?: string;
+  horaEvento?: string;
+  fechaCreacion?: string; // ISO date string
+}
+export interface Agenda {
+  id: number;
+  titulo: string;
+  subtitulo?: string;
+  imagenURL?: string;
+  lugar?: string;
+  texto?: string;
+  fechaActuacion: string; // ISO date string
+  horaEvento?: string;
+  fechaCreacion?: string; // ISO date string
+}
+
+
 
 
 

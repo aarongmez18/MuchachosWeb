@@ -1,0 +1,38 @@
+.card {
+  min-height: 350px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-text {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  overflow-wrap: break-word;
+}
+
+.card-text.scrollable {
+  max-height: 200px; 
+  overflow-y: auto; 
+}
+
+.card-img-top {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.btn-black {
+  background-color: #000;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.btn-black:hover {
+  background-color: #333;
+  color: #ffd700; /* toque dorado al pasar el mouse */
+  transform: translateY(-2px);
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Noticia } from './interfaces/noticia.interface';
 import { NoticiaService } from 'src/app/services/noticia.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -20,7 +21,7 @@ export class BlogComponent implements OnInit {
 
   noticias: Noticia[] = [];
 
-  constructor(private noticiaService: NoticiaService) {}
+  constructor(private readonly noticiaService: NoticiaService, private readonly router: Router) {}
 
     ngOnInit() {
     this.loadNoticias();
@@ -38,4 +39,12 @@ export class BlogComponent implements OnInit {
     });
   }
 
+      navigateTo(url: string) {
+    const [path, fragment] = url.split('#');
+
+    this.router.navigate([path], { fragment: fragment }).then(() => {
+     
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  }
 }

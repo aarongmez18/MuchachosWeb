@@ -1,0 +1,51 @@
+
+  <div class="p-4 mb-4 text-center rounded" style="background-color: #f0f0f0;">
+    <h1 class="text-center">Agenda de Actuaciones</h1>
+  </div>
+<div class="container py-5">
+
+  <div *ngIf="loading" class="text-center text-secondary">Cargando agendas...</div>
+  <div *ngIf="errorMessage" class="text-center text-danger">{{ errorMessage }}</div>
+
+  <div class="row">
+    <div *ngFor="let agenda of agendas" class="col-12 col-sm-6 col-lg-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img *ngIf="agenda.imagenURL" [src]="agenda.imagenURL" class="card-img-top" alt="{{ agenda.titulo }}">
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ agenda.titulo }}</h5>
+          <h6 *ngIf="agenda.subtitulo" class="card-subtitle mb-2 text-muted">{{ agenda.subtitulo }}</h6>
+
+          <p class="card-text mb-1">
+            <strong>Fecha:</strong> {{ agenda.fechaActuacion | date:'dd/MM/yyyy' }}
+          </p>
+          <p *ngIf="agenda.horaEvento" class="card-text mb-1">
+            <strong>Hora:</strong> {{ agenda.horaEvento }}
+          </p>
+          <p *ngIf="agenda.lugar" class="card-text mb-1">
+            <strong>Lugar:</strong> {{ agenda.lugar }}
+          </p>
+          <p *ngIf="agenda.texto" class="card-text mt-2 text-truncate">{{ agenda.texto }}</p>
+
+          <div class="mt-auto text-end text-muted" style="font-size: 0.8rem;">
+            Creado: {{ agenda.fechaCreacion | date:'dd/MM/yyyy' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <section class="py-5" style="background-color: #f0f0f0;">
+    <div class="container">
+      <h1 class="text-start mb-4">De tu interés</h1>
+      <div class="row g-4">
+        <div class="col-md-10">
+            <button class="btn btn-black mb-3" (click)="navigateTo('/blog/semana-santa')">← Ir a Semana Santa</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-black mb-3" (click)="navigateTo('/blog/noticias')">Ir a Noticias →</button>
+        </div>
+      </div>
+    </div>
+  </section>

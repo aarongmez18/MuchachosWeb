@@ -9,10 +9,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/interceptor/auth.interceptor';
+import { SemanaSantaComponent } from './modules/landing/components/noticias/semana-santa/semana-santa.component';
+
+
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, NotFoundComponent],
+  declarations: [AppComponent, LoginComponent, NotFoundComponent, SemanaSantaComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule,BrowserAnimationsModule, HttpClientModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent],

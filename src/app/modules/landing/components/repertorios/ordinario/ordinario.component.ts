@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Marcha } from 'src/app/interfaces/noticia-request.model';
 import { MarchaService } from 'src/app/services/marcha.service';
 
@@ -11,7 +12,7 @@ export class OrdinarioComponent implements OnInit{
    repertoriosOrdinarios: Marcha[] = [];
   errorMessage = '';
 
-  constructor(private readonly marchaService: MarchaService) {}
+  constructor(private readonly marchaService: MarchaService, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.loadOrdinarioRepertorios();
@@ -59,4 +60,13 @@ formatISODuration(duration: string): string {
   const segundos = this.parseISODurationToSeconds(duration);
   return this.formatSegundos(segundos);
 }
+
+    navigateTo(url: string) {
+    const [path, fragment] = url.split('#');
+
+    this.router.navigate([path], { fragment: fragment }).then(() => {
+     
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    });
+  }
 }

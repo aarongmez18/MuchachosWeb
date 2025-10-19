@@ -1,5 +1,5 @@
 <div class="blog-header">
-  <h1 class="blog-title">Noticias</h1>
+  <h1 class="blog-title">Blog</h1>
   <h2 class="blog-subtitle">Últimas noticias y artículos de la Agrupación Musical Muchachos de Consolación</h2>
 </div>
 <div class="blog-container">
@@ -16,4 +16,18 @@
     <hr class="noticia-separador" *ngIf="i < noticias.length - 1">
   </div>
 </div>
+
+  <section class="py-5" style="background-color: #f0f0f0;">
+    <div class="container">
+      <h1 class="text-start mb-4">De tu interés</h1>
+      <div class="row g-4">
+        <div class="col-md-10">
+            <button class="btn btn-black mb-3" (click)="navigateTo('/blog/agenda')">← Ir a Agenda</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-black mb-3" (click)="navigateTo('/blog/semana-santa')">Ir a Semana Santa →</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
